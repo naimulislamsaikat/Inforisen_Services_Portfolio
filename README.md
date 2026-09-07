@@ -138,8 +138,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For inquiries or collaborations, please visit the contact section on the website or reach out through:
-- Email: contact@inforisen.com
-- Website: [https://inforisen.com](https://inforisen.com)
+- Email: naimulislam.dev@gmail.com 
+- Website: [https://Inforisen_Services_Portfolio.com](https://naimulislamsaikat.github.io/Inforisen_Services_Portfolio/)
 
 ## Author
 
