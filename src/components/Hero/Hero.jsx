@@ -1,4 +1,5 @@
 import { FaStar, FaRocket } from 'react-icons/fa';
+import heroImg from '../../assets/hero-smm.png';
 import './Hero.css';
 
 export default function Hero() {
@@ -48,7 +49,7 @@ export default function Hero() {
           <div className="hero__visual-glow" />
           <div className="hero__visual-container">
             <img
-              src="/hero-smm.png"
+              src={heroImg}
               alt="Best SMM Panel Bangladesh"
               className="hero__illustration-img"
             />
