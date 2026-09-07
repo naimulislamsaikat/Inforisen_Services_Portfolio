@@ -1,0 +1,135 @@
+/* ===== CTA Banner ===== */
+.cta-banner {
+  padding: 60px 0 80px;
+  background: var(--white);
+}
+
+.cta-banner__card {
+  background: #FFF8F2;
+  border-radius: 24px;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  border: 1.5px solid var(--primary-light);
+  box-shadow: 0 8px 48px rgba(249, 115, 22, 0.08);
+}
+
+/* World map watermark */
+.cta-banner__map {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.cta-banner__map svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Content */
+.cta-banner__content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.cta-banner__title {
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.cta-banner__title span {
+  color: var(--primary);
+}
+
+.cta-banner__desc {
+  font-size: 14.5px;
+  color: var(--text-gray);
+  line-height: 1.75;
+  margin-bottom: 30px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons */
+.cta-banner__btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-banner__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  border: 2px solid var(--text-dark);
+  background: transparent;
+  transition: all var(--transition);
+}
+
+.cta-banner__btn-outline:hover {
+  background: var(--text-dark);
+  color: white;
+}
+
+.cta-banner__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.30);
+  transition: all var(--transition);
+}
+
+.cta-banner__btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.40);
+}
+
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cta-banner__card {
+    padding: 48px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-banner__card {
+    padding: 32px 20px;
+    border-radius: 16px;
+  }
+
+  .cta-banner__btns {
+    flex-direction: column;
+  }
+
+  .cta-banner__btn-outline,
+  .cta-banner__btn-primary {
+    justify-content: center;
+  }
+}

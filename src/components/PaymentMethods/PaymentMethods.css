@@ -1,0 +1,442 @@
+/* Payment Methods Section */
+.payment {
+  padding: 85px 0 30px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px dashed rgba(226, 232, 240, 0.9);
+  border-bottom: 1px dashed rgba(226, 232, 240, 0.9);
+  scroll-margin-top: 80px;
+}
+
+/* Header */
+.payment__header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.payment__badge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.payment__badge-text {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #f97316;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  font-family: var(--font-heading);
+}
+
+.payment__badge-divider {
+  position: relative;
+  width: 95px;
+  height: 2px;
+  background: #f97316;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment__badge-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #f97316;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(249, 115, 22, 0.6);
+}
+
+.payment__title {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.payment__title-accent {
+  color: #f97316;
+}
+
+.payment__desc {
+  color: #64748b;
+  font-size: 14.5px;
+  line-height: 1.65;
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Stage Area (World Map + Arch Dome + Orbiting Badges) */
+.payment__stage {
+  --orbit-radius: 255px;
+  position: relative;
+  width: 100%;
+  height: 560px;
+  margin-top: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* World Map Background Silhouette */
+.payment__world-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.payment__map-svg {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  max-height: 440px;
+  filter: drop-shadow(0 4px 12px rgba(249, 115, 22, 0.06));
+}
+
+/* Concentric Arcs / Glowing Dome */
+.payment__dome {
+  position: absolute;
+  left: 50%;
+  bottom: 105px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.payment__dome-fill {
+  position: absolute;
+  bottom: 0;
+  width: 640px;
+  height: 320px;
+  border-top-left-radius: 320px;
+  border-top-right-radius: 320px;
+  background: radial-gradient(
+    circle at 50% 100%,
+    rgba(254, 215, 170, 0.6) 0%,
+    rgba(254, 215, 170, 0.35) 45%,
+    rgba(254, 215, 170, 0.12) 72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.payment__dome-inner-fill {
+  position: absolute;
+  bottom: 0;
+  width: 410px;
+  height: 205px;
+  border-top-left-radius: 205px;
+  border-top-right-radius: 205px;
+  background: radial-gradient(
+    circle at 50% 100%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.8) 55%,
+    rgba(255, 255, 255, 0.3) 85%,
+    transparent 100%
+  );
+}
+
+.payment__dome-arc {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  border-bottom: none;
+}
+
+.payment__dome-arc--outer {
+  width: 610px;
+  height: 305px;
+  border: 1.5px solid rgba(251, 146, 60, 0.28);
+}
+
+.payment__dome-arc--mid {
+  width: 510px;
+  height: 255px;
+  border: 1.5px solid rgba(251, 146, 60, 0.4);
+}
+
+.payment__dome-arc--inner {
+  width: 410px;
+  height: 205px;
+  border: 1px dashed rgba(251, 146, 60, 0.3);
+}
+
+/* Orbit Track & Animation System */
+.payment__orbit-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 105px;
+  width: 0;
+  height: 0;
+  z-index: 4;
+}
+
+.payment__orbit-rotator {
+  position: absolute;
+  width: 0;
+  height: 0;
+  animation: paymentOrbitRotate 34s linear infinite;
+  transform-origin: 0 0;
+}
+
+/* Pause on hover */
+.payment__stage:hover .payment__orbit-rotator,
+.payment__stage:hover .payment__counter-rotator {
+  animation-play-state: paused;
+}
+
+.payment__orbit-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform: rotate(var(--item-angle)) translateY(calc(-1 * var(--orbit-radius)));
+}
+
+.payment__counter-angle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(calc(-1 * var(--item-angle)));
+}
+
+.payment__counter-rotator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: paymentCounterRotate 34s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Payment Badge Bubble Card */
+.payment__badge-card {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 12px 26px -2px rgba(15, 23, 42, 0.1),
+    0 4px 10px -2px rgba(249, 115, 22, 0.08),
+    0 0 0 1px rgba(226, 232, 240, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+  outline: none;
+}
+
+.payment__badge-card:hover,
+.payment__badge-card:focus-visible {
+  transform: translate(-50%, -50%) scale(1.18);
+  box-shadow:
+    0 18px 38px -4px rgba(249, 115, 22, 0.3),
+    0 6px 16px -2px rgba(15, 23, 42, 0.12),
+    0 0 0 2px #f97316;
+  border-color: #f97316;
+}
+
+.payment__badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.payment__badge-icon svg {
+  display: block;
+  max-width: 44px;
+  max-height: 28px;
+  transition: transform 0.25s ease;
+}
+
+.payment__badge-card:hover .payment__badge-icon svg {
+  transform: scale(1.06);
+}
+
+/* Watermark Outline Text */
+.payment__watermark {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(34px, 6.4vw, 86px);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(251, 146, 60, 0.38);
+  letter-spacing: clamp(4px, 1.2vw, 14px);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+  text-shadow: 0 0 28px rgba(254, 215, 170, 0.4);
+}
+
+/* Continuous Orbit Animations */
+@keyframes paymentOrbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes paymentCounterRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .payment__stage {
+    --orbit-radius: 210px;
+    height: 500px;
+  }
+
+  .payment__dome {
+    bottom: 90px;
+  }
+
+  .payment__orbit-wrapper {
+    bottom: 90px;
+  }
+
+  .payment__dome-fill {
+    width: 530px;
+    height: 265px;
+  }
+
+  .payment__dome-inner-fill {
+    width: 340px;
+    height: 170px;
+  }
+
+  .payment__dome-arc--outer {
+    width: 490px;
+    height: 245px;
+  }
+
+  .payment__dome-arc--mid {
+    width: 420px;
+    height: 210px;
+  }
+
+  .payment__dome-arc--inner {
+    width: 340px;
+    height: 170px;
+  }
+
+  .payment__badge-card {
+    width: 58px;
+    height: 58px;
+  }
+
+  .payment__badge-icon svg {
+    max-width: 38px;
+    max-height: 24px;
+  }
+
+  .payment__watermark {
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .payment {
+    padding: 60px 0 25px;
+  }
+
+  .payment__stage {
+    --orbit-radius: 155px;
+    height: 400px;
+    margin-top: 10px;
+  }
+
+  .payment__dome {
+    bottom: 70px;
+  }
+
+  .payment__orbit-wrapper {
+    bottom: 70px;
+  }
+
+  .payment__dome-fill {
+    width: 390px;
+    height: 195px;
+  }
+
+  .payment__dome-inner-fill {
+    width: 250px;
+    height: 125px;
+  }
+
+  .payment__dome-arc--outer {
+    width: 360px;
+    height: 180px;
+  }
+
+  .payment__dome-arc--mid {
+    width: 310px;
+    height: 155px;
+  }
+
+  .payment__dome-arc--inner {
+    width: 250px;
+    height: 125px;
+  }
+
+  .payment__badge-card {
+    width: 48px;
+    height: 48px;
+  }
+
+  .payment__badge-icon svg {
+    max-width: 32px;
+    max-height: 20px;
+  }
+
+  .payment__watermark {
+    font-size: 26px;
+    letter-spacing: 4px;
+    bottom: 8px;
+    -webkit-text-stroke: 1px rgba(251, 146, 60, 0.4);
+  }
+}

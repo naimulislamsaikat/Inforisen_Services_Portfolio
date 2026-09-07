@@ -1,0 +1,421 @@
+/* ========================================================
+   WORKING PROCESS (HOW IT WORKS) - REFINED MODERN DESIGN
+   ======================================================== */
+
+.how-it-works {
+  padding: 95px 0 85px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F4 50%, #FFFFFF 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(243, 244, 246, 0.9);
+  border-bottom: 1px solid rgba(243, 244, 246, 0.9);
+  scroll-margin-top: 70px;
+}
+
+/* Subtle background accent glow */
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.how-it-works .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.how-it-works__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 740px;
+  margin: 0 auto 56px;
+}
+
+.how-it-works__badge-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.how-it-works__badge-line {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.how-it-works__badge {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+}
+
+.how-it-works__title {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.how-it-works__title span {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+
+.how-it-works__desc {
+  font-size: 15.5px;
+  color: #64748B;
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+/* ========================================================
+   STEPS GRID FLOW
+   ======================================================== */
+
+.how-it-works__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  position: relative;
+}
+
+/* Step Card */
+.how-it-works__card {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 20px;
+  padding: 30px 22px 26px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+}
+
+.how-it-works__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.how-it-works__card:hover,
+.how-it-works__card.is-active {
+  transform: translateY(-8px);
+  border-color: rgba(249, 115, 22, 0.35);
+  box-shadow: 0 16px 36px rgba(249, 115, 22, 0.12), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.how-it-works__card:hover::before,
+.how-it-works__card.is-active::before {
+  opacity: 1;
+}
+
+/* Card Header: Step Tag & Perk Badge */
+.how-it-works__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.how-it-works__step-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+
+.how-it-works__card:hover .how-it-works__step-tag {
+  background: #FFF7ED;
+  border-color: #FED7AA;
+}
+
+.how-it-works__step-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #64748B;
+  font-family: var(--font-heading);
+}
+
+.how-it-works__step-num {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: var(--font-heading);
+}
+
+.how-it-works__pill-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #EA580C;
+  background: #FFF2E8;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  border: 1px solid rgba(249, 115, 22, 0.15);
+}
+
+/* Step Icon Box */
+.how-it-works__icon-wrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 20px;
+}
+
+.how-it-works__icon-box {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 1.5px solid rgba(249, 115, 22, 0.3);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: var(--primary);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.how-it-works__card:hover .how-it-works__icon-box {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary-dark);
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+/* Step Title & Description */
+.how-it-works__card-title {
+  font-family: var(--font-heading);
+  font-size: 18.5px;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.how-it-works__card:hover .how-it-works__card-title {
+  color: var(--primary-dark);
+}
+
+.how-it-works__card-desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* Highlights Checklist */
+.how-it-works__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px dashed #E2E8F0;
+}
+
+.how-it-works__highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.how-it-works__check-icon {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #FFF4ED;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Step Connector Arrow between cards */
+.how-it-works__step-arrow {
+  position: absolute;
+  right: -17px;
+  top: 48px;
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  border: 1.5px solid #FED7AA;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  z-index: 10;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.how-it-works__card:hover .how-it-works__step-arrow {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+}
+
+/* ========================================================
+   BOTTOM TRUST & ACTION STRIP
+   ======================================================== */
+
+.how-it-works__footer-bar {
+  margin-top: 44px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%);
+  border: 1px solid rgba(249, 115, 22, 0.22);
+  border-radius: 20px;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.05);
+}
+
+.how-it-works__trust-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.how-it-works__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.how-it-works__trust-item .trust-icon {
+  font-size: 18px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.how-it-works__trust-divider {
+  width: 1px;
+  height: 18px;
+  background: #CBD5E1;
+}
+
+.how-it-works__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  transition: all var(--transition);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
+  text-decoration: none;
+}
+
+.how-it-works__cta-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+  color: #FFFFFF;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN
+   ======================================================== */
+
+@media (max-width: 1100px) {
+  .how-it-works__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  /* Adjust arrow connectors for 2-column grid */
+  .how-it-works__step-arrow {
+    display: none;
+  }
+
+  .how-it-works__footer-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .how-it-works__cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: 70px 0 60px;
+  }
+
+  .how-it-works__header {
+    margin-bottom: 38px;
+  }
+
+  .how-it-works__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .how-it-works__trust-divider {
+    display: none;
+  }
+
+  .how-it-works__trust-items {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
