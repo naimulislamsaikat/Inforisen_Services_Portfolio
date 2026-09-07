@@ -5,10 +5,10 @@ import './Navbar.css';
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'About Us', href: '#about' },
+  { label: 'Blog', href: '#how-it-works' },
+  { label: 'About Us', href: '#growth' },
   { label: 'Contact Us', href: '#contact' },
-  { label: 'API', href: '#api' },
+  { label: 'API', href: '#faq' },
 ];
 
 export default function Navbar() {
@@ -29,7 +29,7 @@ export default function Navbar() {
         <a href="#home" className="navbar__logo">
           <div className="navbar__logo-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
           </div>
           <span>Inforisen</span>
